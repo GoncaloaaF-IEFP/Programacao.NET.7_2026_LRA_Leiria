@@ -1,1 +1,1 @@
-# Programacao .NET 7 2026 Leiria
+# Programação .NET 7 2026 Leiria
