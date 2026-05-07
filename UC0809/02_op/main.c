@@ -38,8 +38,10 @@ int main(void) {
     printf("divisao = %f\n", div2);
 
 
-
+    //cria uma var decimal
     double n5 = 10.0;
+
+    //cria uma var decimal
     double n6 = 3.0;
 
     divisao = n5 / n6;
