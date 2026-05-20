@@ -34,10 +34,7 @@ ano 10 -                 = 231 108
 Faça um programa que calcule e escreva o número de anos necessários para que a população do país
 A ultrapasse ou iguale a população do país B, mantidas as taxas de crescimento.
 
-
-
-
-Altere o programa anterior permitindo ao usuário informar as populações e as taxas de crescimento iniciais.
+Altere o programa anterior permitindo ao utilizador informar as populações e as taxas de crescimento iniciais.
 
 Valide a entrada e permita repetir a operação.
 
@@ -55,29 +52,69 @@ int main(void) {
     int anos = 0;
 
 
-    printf("popA: ");
-    scanf("%d", &popA);
-    printf("Taxa crecimento A: ");
-    scanf("%lf", &tcA);
+    int next; // 1 ou 0 -> -1 sem resposta
+    do {
+        next = -1;
 
-    printf("popB: ");
-    scanf("%d", &popB);
-    printf("Taxa crecimento B: ");
-    scanf("%lf", &tcB);
+        printf("popA: ");
+        scanf("%d", &popA);
+        printf("Taxa crecimento A: ");
+        scanf("%lf", &tcA);
 
+        printf("popB: ");
+        scanf("%d", &popB);
+        printf("Taxa crecimento B: ");
+        scanf("%lf", &tcB);
 
-    // validar dadoss
+        // validar dados
+/*
+ *
+ *
+ * popA
+ * tcA
+ *
+ *  popB
+ *  tcB
+ *
+ *
+ * tcB < tcA <-- taxas dif
+ * popB > popA
+ *
+ * 2 ifs
+ *
+ */
 
+        if (tcA <= tcB) {
+            printf("A a Taxa de crescimento de A deve ser maior que a de B");
+            continue;
+        }
 
-    while (popA < popB) {
-        popA = popA * (1 + tcA);
-        popB = popB * (1 + tcB);
-        anos++;
-    }
+        if (popA > popB) {
+            printf("A população de B deve ser maior que a de A");
+            continue;
+        }
 
-    printf("o pais A ultrapassa o B em %d anos", anos);
+        while (popA < popB) {
+            popA = popA * (1 + tcA);
+            popB = popB * (1 + tcB);
+            anos++;
+        }
 
+        printf("o pais A ultrapassa o B em %d anos\n", anos);
 
+        char nextResp;
+        printf("tentar de novo? (S continuar, outra tecla para sair ): ");
+        scanf(" %c", &nextResp);
+
+        if (nextResp == 'S') {
+            next = 1;
+        }else {
+            next = 0;
+        }
+
+    }while (next);
+
+    printf("o programa vai terminar");
 
     return 0;
 }
