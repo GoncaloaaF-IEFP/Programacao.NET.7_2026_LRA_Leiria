@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+void tabuada(int num);
+
+
 int main(void) {
     printf("Hello, World!\n");
 
@@ -16,8 +19,27 @@ int main(void) {
      * Garanta que o número é maior que 0
      *
      *
+     *
+     *  x * y = z
+     *
+     *  1 * 2 = 2
+     *  2 * 2 = 4
      */
 
-
+    tabuada(5);
     return 0;
+}
+
+void tabuada(int num) {
+    // validar se num é postivo
+    if (num <= 0) {
+        printf("Tabuada invalido\n");
+        return;
+    }
+    printf("Tabuada do %d\n", num);
+
+    for (int i = 1; i <= 10; i++) {
+        int res = num * i;
+        printf("%2d x %02d = %d\n", i, num, res);
+    }
 }
